@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belo Rato | Controle de Pragas Urbanas Sem Veneno - Prado Ferreira, PR</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===================================================
+     VARIÁVEIS DE COR - facilita manutenção do tema
+     =================================================== */
+  :root {
+    --verde-escuro: #1b4332;
+    --verde-principal: #2d6a4f;
+    --verde-claro: #74c69d;
+    --terracota: #d9895b;
+    --bege: #f7f3e9;
+    --texto: #2b2b2b;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+    background: var(--bege);
+  }
+
+  h1, h2, h3, .logo-text {
+    font-family: 'Fredoka', sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===================================================
+     HEADER / NAVEGAÇÃO
+     =================================================== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(247, 243, 233, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(27, 67, 50, 0.08);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Placeholder do logo - substituir por <img> quando a arte estiver pronta */
+  .logo-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-principal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    line-height: 1.1;
+  }
+
+  .logo-text span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--terracota);
+    font-weight: 600;
+  }
+
+/* Logo real no header */
+.logo-icon-img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Logo real na hero (dentro do círculo verde) */
+.hero-logo-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.video-container {
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+}
+
+.logo-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .nav-links a {
+    color: var(--texto);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--verde-principal);
+  }
+
+  .btn-whatsapp-nav {
+    background: #25D366;
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.3s;
+  }
+
+  .btn-whatsapp-nav:hover {
+    transform: translateY(-2px);
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 1.7rem;
+    background: none;
+    border: none;
+    color: var(--verde-escuro);
+    cursor: pointer;
+  }
+
+  /* ===================================================
+     HERO
+     =================================================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 90px;
+    background:
+      radial-gradient(circle at 15% 25%, rgba(116, 198, 157, 0.25) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(217, 137, 91, 0.15) 0%, transparent 50%),
+      var(--bege);
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .badge-eco {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(45, 106, 79, 0.12);
+    color: var(--verde-principal);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    line-height: 1.15;
+    color: var(--verde-escuro);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--terracota);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: #25D366;
+    color: #fff;
+    padding: 16px 34px;
+    border-radius: 40px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn-secondary {
+    border: 2px solid var(--verde-principal);
+    color: var(--verde-principal);
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--verde-principal);
+    color: #fff;
+  }
+
+  .hero-image-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-circle {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    box-shadow: 0 30px 60px rgba(27, 67, 50, 0.25);
+  }
+
+  .float-tag {
+    position: absolute;
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(27, 67, 50, 0.15);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .float-tag.top { top: 0; left: -10px; }
+  .float-tag.bottom { bottom: 10px; right: -10px; }
+
+  /* ===================================================
+     DIFERENCIAL - SEM VENENO (destaque principal)
+     =================================================== */
+  .diferencial {
+    background: var(--verde-escuro);
+    color: #fff;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .diferencial h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .diferencial h2 span {
+    color: var(--terracota);
+  }
+
+  .diferencial p {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d4e8dd;
+  }
+
+  .diferencial-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .dif-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 30px 20px;
+  }
+
+  .dif-card .icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  .dif-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  .dif-card p {
+    font-size: 0.88rem;
+    color: #c5dcd0;
+    margin: 0;
+  }
+
+  /* ===================================================
+     SEÇÃO GENÉRICA
+     =================================================== */
+  .section {
+    padding: 90px 0;
+  }
+
+  .section-title {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 55px;
+  }
+
+  .section-title .tag {
+    color: var(--terracota);
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .section-title h2 {
+    font-size: 2.2rem;
+    color: var(--verde-escuro);
+    margin: 12px 0 14px;
+  }
+
+  .section-title p {
+    color: #5a5a5a;
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  /* ===================================================
+     SERVIÇOS
+     =================================================== */
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .servico-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 34px 26px;
+    box-shadow: 0 10px 30px rgba(27, 67, 50, 0.06);
+    transition: transform 0.3s;
+    text-align: center;
+  }
+
+  .servico-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .servico-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-principal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin: 0 auto 18px;
+  }
+
+  .servico-card h3 {
+    font-size: 1.1rem;
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+  }
+
+  .servico-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ===================================================
+     COMO FUNCIONA
+     =================================================== */
+  .como-funciona {
+    background: #fff;
+  }
+
+  .passos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .passo {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .passo .num {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--terracota);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .passo h4 {
+    color: var(--verde-escuro);
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+
+  .passo p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* ===================================================
+     DEPOIMENTOS
+     =================================================== */
+  .depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .depoimento-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(27, 67, 50, 0.06);
+  }
+
+  .stars {
+    color: var(--terracota);
+    margin-bottom: 14px;
+  }
+
+  .depoimento-card p {
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+
+  .depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .depoimento-autor h4 {
+    font-size: 0.9rem;
+    color: var(--verde-escuro);
+  }
+
+  .depoimento-autor span {
+    font-size: 0.78rem;
+    color: #999;
+  }
+
+  /* ===================================================
+     CTA FINAL
+     =================================================== */
+  .cta-final {
+    background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
+    color: #fff;
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  .cta-final h2 {
+    font-size: 2.1rem;
+    margin-bottom: 16px;
+  }
+
+  .cta-final p {
+    max-width: 600px;
+    margin: 0 auto 32px;
+    color: #d4e8dd;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* ===================================================
+     CONTATO
+     =================================================== */
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .info-list li {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .info-list .icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--verde-claro), var(--verde-principal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .info-list h4 {
+    color: var(--verde-escuro);
+    margin-bottom: 4px;
+  }
+
+  .info-list p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .contato-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 46px 36px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(27, 67, 50, 0.1);
+  }
+
+  .contato-card .icon-big {
+    font-size: 3.5rem;
+    margin-bottom: 18px;
+  }
+
+  .contato-card h3 {
+    color: var(--verde-escuro);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  .contato-card p {
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ===================================================
+     FOOTER
+     =================================================== */
+  footer {
+    background: var(--verde-escuro);
+    color: #cfe3d8;
+    padding: 50px 0 20px;
+    text-align: center;
+  }
+
+  footer .footer-logo {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: #9dc2ac;
+    margin-top: 20px;
+  }
+
+  /* ===================================================
+     BOTÃO FLUTUANTE WHATSAPP
+     =================================================== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: #25D366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    z-index: 999;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  /* ===================================================
+     RESPONSIVO
+     =================================================== */
+  @media (max-width: 968px) {
+    .hero-grid, .contato-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-image-box { order: -1; }
+    .diferencial-cards, .servicos-grid, .depoimentos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .passos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-links {
+      position: fixed;
+      top: 74px;
+      left: 0;
+      width: 100%;
+      background: var(--bege);
+      flex-direction: column;
+      padding: 24px;
+      gap: 18px;
+      transform: translateY(-150%);
+      transition: transform 0.3s;
+    }
+    .nav-links.active {
+      transform: translateY(0);
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .diferencial-cards, .servicos-grid, .depoimentos-grid, .passos-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-circle {
+      width: 260px;
+      height: 260px;
+      font-size: 5rem;
+    }
+    .float-tag {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+<header>
+  <nav>
+    <div class="logo">
+      <!-- Placeholder do logo - trocar por <img src="logo.png"> quando a arte final estiver pronta -->
+      <img src="belorato.png" alt="Logo Belo Rato" class="logo-icon-img">
+      <div class="logo-text">Belo Rato<span>CONTROLE DE PRAGAS URBANAS</span></div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#diferencial">Nosso Método</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li>
+        <a href="https://wa.me/5543999008888?text=Ol%C3%A1%2C%20gostaria%20dos%20servi%C3%A7os%20de%20controle%20de%20praga%20urbana"
+           target="_blank" class="btn-whatsapp-nav">💬 WhatsApp</a>
+      </li>
+    </ul>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </nav>
+</header>
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge-eco">🌿 Método 100% sem veneno</div>
+      <h1>Controle de pragas urbanas com <em>respeito à vida</em></h1>
+      <p>A Belo Rato elimina o problema das pragas na sua casa ou empresa sem usar venenos. Métodos humanos, seguros para crianças, animais de estimação e para o meio ambiente — em Prado Ferreira e região.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/5543999008888?text=Ol%C3%A1%2C%20gostaria%20dos%20servi%C3%A7os%20de%20controle%20de%20praga%20urbana"
+           target="_blank" class="btn-primary">💬 Solicitar Orçamento</a>
+        <a href="#servicos" class="btn-secondary">Ver Serviços</a>
+      </div>
+    </div>
+    <div class="hero-image-box">
+       <video
+      class="video-logo-destaque"
+      autoplay
+      muted
+      loop
+      playsinline
+      controls>
+      <source src="video.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos em HTML5.
+    </video>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     DIFERENCIAL - SEM VENENO
+     ========================================================= -->
+<section class="diferencial" id="diferencial">
+  <div class="container">
+    <h2>Nosso maior diferencial: <span>zero veneno</span></h2>
+    <p>Acreditamos que é possível resolver o problema das pragas urbanas sem colocar em risco sua família, seus bichinhos de estimação ou o meio ambiente. Por isso, a Belo Rato utiliza exclusivamente métodos humanos de captura e afastamento — nada de produtos tóxicos ou venenos que podem contaminar o ambiente.</p>
+    <div class="diferencial-cards">
+      <div class="dif-card">
+        <div class="icon">🚫☠️</div>
+        <h3>Sem produtos tóxicos</h3>
+        <p>Nenhum risco de contaminação para pessoas ou superfícies da sua casa.</p>
+      </div>
+      <div class="dif-card">
+        <div class="icon">🐾</div>
+        <h3>Seguro para pets</h3>
+        <p>Seus animais de estimação ficam protegidos durante e após o serviço.</p>
+      </div>
+      <div class="dif-card">
+        <div class="icon">🌱</div>
+        <h3>Respeito ao meio ambiente</h3>
+        <p>Métodos que não agridem a natureza nem outros animais não-alvo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SERVIÇOS
+     ========================================================= -->
+<section class="section" id="servicos">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">O que fazemos</span>
+      <h2>Nossos Serviços</h2>
+      <p>Soluções completas para o controle de pragas urbanas, sempre sem o uso de veneno.</p>
+    </div>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <div class="servico-icon">🐀</div>
+        <h3>Controle de Roedores</h3>
+        <p>Captura e afastamento humano de ratos e camundongos, sem armadilhas letais com veneno.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🪳</div>
+        <h3>Controle de Insetos</h3>
+        <p>Métodos naturais para afastar baratas, formigas e outros insetos urbanos.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🕊️</div>
+        <h3>Afastamento de Pombos</h3>
+        <p>Soluções que impedem a proliferação sem causar dano às aves.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🦇</div>
+        <h3>Manejo de Morcegos</h3>
+        <p>Remoção segura respeitando a legislação ambiental vigente.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🏠</div>
+        <h3>Vistoria Residencial</h3>
+        <p>Identificamos pontos de entrada e focos de infestação na sua casa.</p>
+      </div>
+      <div class="servico-card">
+        <div class="servico-icon">🏢</div>
+        <h3>Controle Comercial</h3>
+        <p>Atendimento para empresas, comércios e indústrias da região.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     COMO FUNCIONA
+     ========================================================= -->
+<section class="section como-funciona">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Processo</span>
+      <h2>Como Funciona o Serviço</h2>
+      <p>Um processo simples, transparente e sem complicação.</p>
+    </div>
+    <div class="passos-grid">
+      <div class="passo">
+        <div class="num">1</div>
+        <h4>Contato</h4>
+        <p>Você chama a gente pelo WhatsApp e explica o problema.</p>
+      </div>
+      <div class="passo">
+        <div class="num">2</div>
+        <h4>Vistoria</h4>
+        <p>Avaliamos o local para identificar a praga e o melhor método.</p>
+      </div>
+      <div class="passo">
+        <div class="num">3</div>
+        <h4>Aplicação</h4>
+        <p>Executamos o controle humano, sem veneno, com segurança.</p>
+      </div>
+      <div class="passo">
+        <div class="num">4</div>
+        <h4>Acompanhamento</h4>
+        <p>Garantimos o resultado com suporte pós-serviço.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     DEPOIMENTOS
+     ========================================================= -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <span class="tag">Clientes satisfeitos</span>
+      <h2>O Que Dizem Sobre a Belo Rato</h2>
+    </div>
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p>"Finalmente uma empresa que resolve o problema sem eu precisar me preocupar com meu cachorro em casa. Recomendo!"</p>
+        <div class="depoimento-autor">
+          <div class="avatar">R</div>
+          <div><h4>Roberto A.</h4><span>Prado Ferreira, PR</span></div>
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p>"Atendimento rápido e explicaram tudo certinho sobre o método. Não usar veneno fez toda diferença pra mim."</p>
+        <div class="depoimento-autor">
+          <div class="avatar">S</div>
+          <div><h4>Sandra M.</h4><span>Prado Ferreira, PR</span></div>
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p>"Resolveram o problema de pombos no comércio sem nenhum machucado nos bichos. Muito profissionais."</p>
+        <div class="depoimento-autor">
+          <div class="avatar">J</div>
+          <div><h4>João P.</h4><span>Comerciante local</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CTA FINAL
+     ========================================================= -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Pronto para resolver o problema de pragas na sua casa?</h2>
+    <p>Fale agora com a Belo Rato e receba um orçamento sem compromisso. Atendimento rápido em Prado Ferreira e região.</p>
+    <a href="https://wa.me/5543999008888?text=Ol%C3%A1%2C%20gostaria%20dos%20servi%C3%A7os%20de%20controle%20de%20praga%20urbana"
+       target="_blank" class="btn-primary">💬 Chamar no WhatsApp Agora</a>
+  </div>
+</section>
+
+<!-- =========================================================
+     CONTATO
+     ========================================================= -->
+<section class="section" id="contato">
+  <div class="container contato-grid">
+    <div>
+      <div class="section-title" style="text-align:left; margin: 0 0 40px;">
+        <span class="tag">Fale Conosco</span>
+        <h2>Atendimento em Prado Ferreira - PR</h2>
+      </div>
+      <ul class="info-list">
+        <li>
+          <div class="icon-box">📍</div>
+          <div><h4>Localização</h4><p>Prado Ferreira, Paraná - Atendimento na região</p></div>
+        </li>
+        <li>
+          <div class="icon-box">📞</div>
+          <div><h4>Telefone / WhatsApp</h4><p>(43) 99900-8888</p></div>
+        </li>
+        <li>
+          <div class="icon-box">⏰</div>
+          <div><h4>Horário de Atendimento</h4><p>Segunda a sábado, das 8h às 18h</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="contato-card">
+      <div class="icon-big">🐀</div>
+      <h3>Solicite seu Orçamento</h3>
+      <p>Clique no botão abaixo e fale direto com nossa equipe pelo WhatsApp, sem burocracia.</p>
+      <a href="https://wa.me/5543999008888?text=Ol%C3%A1%2C%20gostaria%20dos%20servi%C3%A7os%20de%20controle%20de%20praga%20urbana"
+         target="_blank" class="btn-primary" style="width:100%; justify-content:center;">💬 Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Belo Rato</div>
+    <p style="color:#cfe3d8; max-width:500px; margin:0 auto;">
+      Controle de pragas urbanas sem veneno, com métodos humanos e responsáveis. Prado Ferreira - PR.
+    </p>
+    <p>© 2026 Belo Rato - Controle de Pragas Urbanas. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- =========================================================
+     BOTÃO FLUTUANTE WHATSAPP
+     ========================================================= -->
+<a href="https://wa.me/5543999008888?text=Ol%C3%A1%2C%20gostaria%20dos%20servi%C3%A7os%20de%20controle%20de%20praga%20urbana"
+   target="_blank" class="whatsapp-float">💬</a>
+
+<!-- =========================================================
+     SCRIPT - MENU MOBILE
+     ========================================================= -->
+<script>
+  // Lógica simples de toggle do menu mobile
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', function () {
+    navLinks.classList.toggle('active');
+  });
+
+  // Fecha o menu ao clicar em um link (melhora a experiência mobile)
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
+
+</body>
+</html>

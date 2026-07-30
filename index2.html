@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo: Agente de IA para Controle de Validades</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; background: #f4f7f6; }
+        h1, h2 { color: #333; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .status-critico { color: red; font-weight: bold; }
+        .status-alerta { color: orange; font-weight: bold; }
+        .status-seguro { color: green; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        #output-ia { background: #e9ecef; padding: 15px; border-left: 5px solid #28a745; white-space: pre-line; margin-top: 15px; font-family: monospace; }
+    </style>
+
+    <!-- Importação segura via script clássico (Não bloqueia o carregamento da página) -->
+    <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+
+    <h1>🧠 Painel do Agente de IA (Prevenção de Perdas)</h1>
+    
+    <div class="card">
+        <h2>📦 Banco de Dados JSON Local</h2>
+        <table id="tabela-produtos">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Validade</th>
+                    <th>Estoque</th>
+                    <th>Dias Restantes</th>
+                    <th>Status</th>
+                    <th>Desconto Sugerido</th>
+                </tr>
+            </thead>
+            <tbody><!-- Inserido via JS --></tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>🤖 Ações do Agente de IA</h2>
+        <p>Clique abaixo para enviar os dados críticos para a inteligência artificial gerar uma estratégia.</p>
+        <button onclick="executarAgenteIA()">Gerar Relatório de Ação com IA</button>
+        <div id="output-ia" style="display:none;">Processando relatório...</div>
+    </div>
+
+    <script>
+        // 1. Seu Banco de Dados JSON Local (Garantido: Sempre vai carregar)
+        const db_estoque_json = [
+            { "id": 1, "nome": "Iogurte de Morango", "validade": "2026-07-23", "estoque": 45, "preco": 4.50 },
+            { "id": 2, "nome": "Leite Integral UHT", "validade": "2026-07-28", "estoque": 120, "preco": 5.20 },
+            { "id": 3, "nome": "Queijo Prato Fatiado", "validade": "2026-08-15", "estoque": 8, "preco": 14.90 }
+        ];
+
+        // 2. Motor do Agente: Processa datas e prazos
+        function analisarValidades(produtos) {
+            const hoje = new Date();
+            
+            return produtos.map(p => {
+                const dataValidade = new Date(p.validade);
+                const diferencaTempo = dataValidade - hoje;
+                const diasRestantes = Math.ceil(diferencaTempo / (1000 * 60 * 60 * 24));
+                
+                let desconto = 0;
+                let status = "Seguro";
+
+                if (diasRestantes <= 3) {
+                    desconto = 50;
+                    status = "Crítico";
+                } else if (diasRestantes <= 7) {
+                    desconto = 20;
+                    status = "Alerta";
+                }
+
+                return { ...p, diasRestantes, desconto, status };
+            });
+        }
+
+        // 3. Renderização imediata na tela
+        const produtosAnalisados = analisarValidades(db_estoque_json);
+        const tbody = document.querySelector("#tabela-produtos tbody");
+
+        produtosAnalisados.forEach(p => {
+            const classStatus = `status-${p.status.toLowerCase()}`;
+            tbody.innerHTML += `
+                <tr>
+                    <td><strong>${p.nome}</strong></td>
+                    <td>${p.validade}</td>
+                    <td>${p.estoque} un</td>
+                    <td>${p.diasRestantes} dias</td>
+                    <td class="${classStatus}">${p.status}</td>
+                    <td>${p.desconto > 0 ? p.desconto + '% OFF' : 'Preço Normal'}</td>
+                </tr>
+            `;
+        });
+
+// 4. Chamada de IA nativa corrigida e testada
+async function executarAgenteIA() {
+    const divOutput = document.getElementById("output-ia");
+    divOutput.style.display = "block";
+    divOutput.style.whiteSpace = "pre-wrap"; 
+    divOutput.innerText = "O Agente de IA está analisando o JSON via API direta...";
+
+    // SUBSTITUA PELA SUA API KEY REAL DO GOOGLE AI STUDIO
+    const API_KEY = "";
+
+    if(API_KEY === "SUA_API_KEY" || API_KEY === "" || API_KEY === "Axxxxj5tg") {
+        divOutput.innerText = "⚠️ Os produtos carregaram localmente com sucesso! Para habilitar a inteligência artificial, adicione sua API Key do Google AI Studio no código.";
+        return;
+    }
+
+    const produtos = typeof produtosAnalisados !== 'undefined' ? produtosAnalisados : [];
+    const itensCriticos = produtos.filter(p => p.status !== "Seguro");
+    
+    const textoPrompt = `Você é um agente especialista em perdas de validade curta. Crie tarefas operacionais rápidas e em tópicos claros para a equipe lidar com estes itens hoje: ${JSON.stringify(itensCriticos)}`;
+
+    // URL ATUALIZADA DO ENDPOINT PADRÃO
+    const urlApi = "https://googleapis.com";
+
+    try {
+        const resposta = await fetch(urlApi, {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                // A chave agora é enviada de forma segura no cabeçalho em letras minúsculas
+                "x-goog-api-key": API_KEY 
+            },
+            // Estrutura simplificada de envio do novo padrão
+            body: JSON.stringify({
+                model: "gemini-3.6-flash",
+                input: textoPrompt
+            })
+        });
+
+        if (!resposta.ok) {
+            throw new Error(`Erro na API (${resposta.status})`);
+        }
+
+        const dadosRecebidos = await resposta.json();
+        
+        // LEITURA CORRIGIDA: Acessando o texto da resposta no novo padrão
+        if (dadosRecebidos?.output) {
+            divOutput.innerText = dadosRecebidos.output;
+        } else {
+            divOutput.innerText = "A IA respondeu, mas a estrutura dos dados veio diferente do esperado.";
+        }
+
+    } catch (error) {
+        divOutput.innerText = "Erro ao conectar com a API da IA: " + error.message + 
+                              "\n\nDica: Pressione F12 e clique na aba 'Console' para ver o relatório técnico do erro.";
+    }
+}
+
+    </script>
+</body>
+</html>
+
